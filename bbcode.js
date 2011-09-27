@@ -32,20 +32,28 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     };
     
        
-    _render = function (input, options) {
+    _render = function (input, ops) {
         
         // bbcode_table will contain objects with two
         // properties -- re and sub -- which contain
         // a regex literal and function to substitute the
         // match with, respectively
-        var bbcode_table = {};
-                
+        var bbcode_table = {},
+            options = {
+                escape: true,
+                newlines: true  
+            };
+       
         if (!input) { return ''; }
-        if (typeof options !== 'object') { options = {}; }
 
-        options.escape = options.escape || true;
-        options.newlines = options.newlines || true;
-                
+        if (opts) {
+            for (var k in opts) {
+                if (opts.hasOwnProperty(k)) {
+                    options[k] = opts[k];
+                }
+            }
+        };
+
         if (options.escape) {
             input = _htmlEscape(input)
         } 
