@@ -32,7 +32,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     };
     
        
-    _render = function (input, ops) {
+    _render = function (input, opts) {
         
         // bbcode_table will contain objects with two
         // properties -- re and sub -- which contain
