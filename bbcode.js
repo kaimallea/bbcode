@@ -22,7 +22,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     
     var root = this,
         bbcode = {},
-        _htmlEscape, _process;
+        _htmlEscape;
     
     bbcode.VERSION = '0.1';
 
