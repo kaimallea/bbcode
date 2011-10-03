@@ -86,6 +86,13 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             sub: function (match, p1) { return '<blockquote><p>' + p1 + '<p></blockquote>'; }
         };
         
+
+        // replace [quote="Obama"]...[/quote] with Obama wrote: <blockquote><p>...</p></blockquote>
+        bbcode_table.quotespecific = {
+            re: /\[quote=(?:"|&quot;)(.*?)(?:"|&quot;)\]([\s\S]*?)\[\/quote\]/ig,
+            sub: function (match, p1, p2) { return p1 + ' wrote: <blockquote><p>' + p2 + '<p></blockquote>'; }
+        };
+
         
         // replace [s]...[/s] with <del>...</del>
         bbcode_table.strikethrough = {
