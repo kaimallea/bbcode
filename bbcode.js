@@ -129,6 +129,20 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         };
         
         
+        // replace [email]...[/email] with <a href="mailto:...">...</a>
+        bbcode_table.email = {
+            re: /\[email\]([\s\S]*?)\[\/email\]/ig,
+            sub: function (match, p1) { return '<a href="mailto:' + p1 + '">' + p1 + '</a>'; }
+        };        
+        
+        
+        // replace [email=someone@somewhere.com]An e-mail link[/email] with <a href="mailto:someone@somewhere.com">an e-mail link</a>
+        bbcode_table.emailcustom = {
+            re: /\[email=(.*?)\]([\s\S]*?)\[\/email\]/ig,
+            sub: function (match, p1, p2) { return '<a href="mailto:' + p1 + '">' + p2 + '</a>'; }
+        };  
+
+
         // replace [url]...[/url] with <a href="...">...</a>
         bbcode_table.url = {
             re: /\[url\]([\s\S]*?)\[\/url\]/ig,
