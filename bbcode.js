@@ -28,7 +28,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
     _htmlEscape = function (str) {
-      return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     };
     
        
@@ -47,15 +47,15 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         if (!input) { return ''; }
 
         if (opts) {
-            for (var k in opts) {
-                if (opts.hasOwnProperty(k)) {
-                    options[k] = opts[k];
+            for (var o in opts) {
+                if (opts.hasOwnProperty(o)) {
+                    options[o] = opts[o];
                 }
             }
-        };
+        }
 
         if (options.escape) {
-            input = _htmlEscape(input)
+            input = _htmlEscape(input);
         } 
         
         
@@ -225,13 +225,13 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         }
         
         return input;        
-    }
+    };
     
     bbcode.render = _render;
     
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = bbcode;
     } else {
-        root['bbcode'] = bbcode;
+        root.bbcode = bbcode;
     }
 }());
