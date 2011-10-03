@@ -93,6 +93,13 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             sub: function (match, p1, p2) { return p1 + ' wrote: <blockquote><p>' + p2 + '<p></blockquote>'; }
         };
 
+
+        // relace [size=30]...[/size] with <span style="font-size:30%;">...</span>
+        bbcode_table.size = {
+            re: /\[size=(\d+)\]([\s\S]*?)\[\/size\]/ig,
+            sub: function (match, p1, p2) { return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>'; }
+        };        
+
         
         // replace [s]...[/s] with <del>...</del>
         bbcode_table.strikethrough = {
