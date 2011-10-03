@@ -175,7 +175,29 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 return '<ul>'  + p1.replace(/[\n\r?]/, '') + '</ul>';
             }
         };
-            
+        
+
+        // replace [list=1|a][*]item1 [*]item2 ...[/list] with (<ol>|<ol style="list-style-type: lower-alpha">)<li>item1</li><li>item2</li>...</ol>
+        bbcode_table.lists2 = {
+            re: /\[list=(1|a)\]([\s\S]*?)\[\/list\]/ig,
+            sub: function (match, p1, p2) {
+                var list_type = '';
+                if (p1 === '1') {
+                    list_type = '<ol>';
+                } else if (p1 === 'a') {
+                    list_type = '<ol style="list-style-type: lower-alpha">';
+                } else {
+                    list_type = '<ol>';
+                }
+                             
+                p2 = p2.replace(/\[\*\]([^\[\*\]]*)/ig, function (match, sp1) {
+                    return '<li>' + sp1.replace(/[\n\r?]/, '') + '</li>';
+                });
+                
+                return list_type + p2.replace(/[\n\r?]/, '') + '</ol>';
+            }
+        };    
+          
         
         // replace [youtube]...[/youtube] with <iframe src="..."></iframe>
         bbcode_table.youtube = {
